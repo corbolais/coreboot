@@ -19,7 +19,6 @@
 #include <arch/early_variables.h>
 #include <commonlib/helpers.h>
 #include <console/console.h>
-#include <delay.h>
 #include <device/device.h>
 #include <device/pci.h>
 #include <device/pci_ops.h>
@@ -189,14 +188,6 @@ static int spi_ctrlr_xfer(const struct spi_slave *slave, const void *dout,
 
 	for (count = 0; count < bytesin; count++, din++)
 		*(uint8_t *)din = spi_read8(SPI_FIFO + count + bytesout);
-
-#if !ENV_RAMSTAGE
-	/*
-	 * FIXME: too frequent SPI transactions lead to reset in early boot
-	 * stages
-	 */
-	udelay(100);
-#endif
 
 	return 0;
 }
