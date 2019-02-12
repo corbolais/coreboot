@@ -25,6 +25,7 @@ ramstage-y += BiosCallOuts.c
 ramstage-y += OemCustomize.c
 ramstage-y += gpio_ftns.c
 ramstage-y += s1_button.c
+ramstage-y += s3nv.c
 
 # Order of names in SPD_SOURCES is important!
 SPD_SOURCES  = HYNIX-2G-1333
